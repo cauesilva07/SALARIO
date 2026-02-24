@@ -1,0 +1,23 @@
+import os
+
+#Limpa o terminal
+
+os.system("cls")
+numero = int(input("Digite um número: "))
+
+print("Digite as notas")
+
+primeira_nota = float(input("Digite a primeira nota: "))
+segunda_nota = float(input("Digite a segunda nota: "))
+terceira_nota = float(input("Digite a terceira nota: "))
+
+media = (primeira_nota + segunda_nota + terceira_nota) / 3
+print("A média das notas é:", media) 
+
+if numero < 7:
+    print("O aluno foi reprovado.")
+    print("Motivo: Nota abaixo da média.") 
+
+    if numero > 7:
+        print("O aluno foi aprovado.")
+        print("Motivo: Nota acima da média.") 
