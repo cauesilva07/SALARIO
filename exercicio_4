@@ -1,0 +1,20 @@
+import os
+# Limpa o terminal.
+
+os.system("cls") 
+
+primeiro_numero = float(input("Digite o primeiro número: "))
+segundo_numero = float(input("Digite o segundo número: "))
+
+#calculando
+produto = primeiro_numero * segundo_numero
+soma = primeiro_numero + segundo_numero
+media = soma / 2 
+maior = max(primeiro_numero, segundo_numero) 
+menor = min(segundo_numero, primeiro_numero)
+
+print("Soma:", soma)
+print("Média:", media)
+print("Maior:", maior)
+print("Menor:", menor)
+print("Produto:", produto) 
