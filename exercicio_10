@@ -1,0 +1,28 @@
+import os
+
+os.system("cls || clear")
+
+peso = float(input("Digite o seu peso  (em kg): "))
+altura = float(input("Digite a sua altura  (em cm): "))
+
+imc = peso / (altura * altura)
+
+print(f"Seu IMC é: {imc:.2f}")
+
+if imc < 18.5:
+        print("Classificação: Abaixo do peso")
+
+elif imc == 18.5 and 24.9:
+        print("Classificação: Peso normal")
+
+elif imc == 25.9 and 29.9:
+        print("Classificação: Sobrepeso")
+
+elif imc == 30.0 and imc == 34.9:
+        print("Classificação: Obesidade")
+
+elif imc == 35.0 and imc == 39.9:
+        print("Classificação: Obesidade grau || (severa)")
+
+elif imc >= 40:
+        print("Classificação: Obesidade grau ||| (mórbida)") 
