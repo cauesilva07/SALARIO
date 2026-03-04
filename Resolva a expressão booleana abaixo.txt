@@ -51,8 +51,9 @@ R=(F) AND (F) AND (F) OR (V)
 R= F OR V
 R= V
 
-R=((NOT(V)OR F) AND NOT(V AND F)) OR NOT (V OR F)
+R=((NOT(V)OR F) AND (V AND NOT(F)) OR NOT (V OR F)
 R=(F) OR (F) AND (F) AND (F) OR (F)
 R= F AND V OR F
 R=F OR F
 R= F
+
