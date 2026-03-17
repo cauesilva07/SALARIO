@@ -1,18 +1,14 @@
 import os
+import time
 
-os.system("cls || clear")
+os.system("cls")
 
-idade = int(input("Digite sua idade: "))
+soma = 0
+QUANTIDADE_DE_NOTAS = 3
 
-if idade >= 65:
-     print("Não são obrigados a votar.")
+for i in range(QUANTIDADE_DE_NOTAS):
+    nota = float(input("Digite a nota do aluno: "))
+    soma += nota
 
-elif idade >= 18:
-    print("Voto obrigatório.")
-
-elif idade >= 16:
-    print("Voto opcional.") 
-
-else:
-    print(" Não podem votar.") 
-
+media = soma / QUANTIDADE_DE_NOTAS
+print(f"Média: {media}")

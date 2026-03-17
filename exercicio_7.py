@@ -1,15 +1,15 @@
 import os
+import time
 
-os.system("cls || clear")
+os.system("cls")
 
-primeiro_numero = int(input("Digite o primeiro número: "))
-segundo_numero = int(input("Digite o segundo número: "))
+a = int(input("Digite um número: "))
+b = int(input("Digite outro número: "))
+c = int(input("Digite mais um número: "))
 
-print(" - solicitando dados -")
+media = (a + b + c) / 3
 
-maior = max(primeiro_numero, segundo_numero)
-menor = min(primeiro_numero, segundo_numero)
-
-print(" - Exibindo dados -")
-print(f"Maior: {maior}")
-print(f"Menor: {menor}") 
+if media >= 7:
+    print("Aluno aprovado com média ")
+elif media >= 4:
+    print("Aluno em recuperação com média ")
