@@ -2,9 +2,7 @@ import os
 
 os.system("cls")
 
-tentativas = 0
-
-while tentativas < 3:
+while True:
     login = input("Digite o login: ")
     senha = input("Digite a senha: ")
 
@@ -12,8 +10,4 @@ while tentativas < 3:
         print("Acesso permitido!")
         break
     else:
-        tentativas += 1
-        print("Login ou senha incorretos.")
-
-if tentativas == 3:
-    print("Número máximo de tentativas excedido. Programa encerrado.")
+        print("Login ou senha incorretos. Tente novamente.")
