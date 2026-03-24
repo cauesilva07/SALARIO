@@ -1,34 +1,53 @@
 import os
 
-os.system("cls")
-
-total = 0
-opção = 0
+preco_total = 0
+pratos_solicitados = ""
 
 while True:
-    print("1 - Pizza (15,00)")
-    print("2 - Lasanha (20,00)")
-    print("3 - Strogonoff (18,00)")
-    print("4 - Bife acebolado (25,00)")
-    print("5 - Pão com ovo (5,00)")
+    # Limpar o terminal.
+    os.system("cls")
 
-    opção = int(input("Escolha um prato: "))
+    print("""
+    === MENU ===
+    1   Picanha          R$ 25,00
+    2   Lasanha          R$ 20,00
+    3   Strogonoff       R$ 18,00
+    4   Bife acebolado   R$ 15,00
+    5   Pão com ovo      R$ 15,00
+        """)
 
-    if opção == 1:
-        total += 15.00
-    elif opção == 2:
-        total += 20.00
-    elif opção == 3:
-        total += 18.00
-    elif opção == 4:
-        total += 25.00
-    elif opção == 5:
-        total += 5.00
-    else:
-        print("Opção inválida.")
+    opcao = int(input("Digite o número da opção desejada: "))
 
-    continuar = input("Deseja continuar? (s/n): ")
-    if continuar.lower() != "s":
+    match opcao:
+        case 1:
+            prato = "Picanha"
+            preco = 25
+        case 2:
+            prato = "Lasanha"
+            preco = 20
+        case 3:
+            prato = "Strogonoff"
+            preco = 18
+        case 4:
+            prato = "Bife acebolado"
+            preco = 15
+        case 5:
+            prato = "Pão com ovo"
+            preco = 5
+        case _:
+            prato = ""
+            preco = 0
+            print("Opção inválida.")
+            print("Tente novamente... \n")
+   
+    preco_total += preco
+    pratos_solicitados += ", " + prato if pratos_solicitados else prato
+   
+    mais_pedidos = input("Deseja fazer um novo pedido? \nUse S ou N: ").lower()
+   
+    if mais_pedidos == "n":
         break
-            
-print("Total da conta: R$ {:.2f}".format(total))
+       
+print("\n=== Nota Fiscal ===")
+print(f"Pratos solicitados: {pratos_solicitados}")
+print(f"Total da compra: R$ {preco_total}")
