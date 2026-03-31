@@ -1,53 +1,41 @@
 import os
 
-preco_total = 0
-pratos_solicitados = ""
+# Vetores do cardápio
+codigos = [1, 2, 3, 4, 5]
+pratos = ["Picanha", "Lasanha", "Strogonoff", "Bife Acebolado", "Pão com ovo"]
+valores = [25.00, 20.00, 18.00, 15.00, 5.00]
+
+# Vetores para armazenar os pedidos
+pedidos = []
+valores_pedidos = []
 
 while True:
-    # Limpar o terminal.
-    os.system("cls")
-
-    print("""
-    === MENU ===
-    1   Picanha          R$ 25,00
-    2   Lasanha          R$ 20,00
-    3   Strogonoff       R$ 18,00
-    4   Bife acebolado   R$ 15,00
-    5   Pão com ovo      R$ 15,00
-        """)
-
-    opcao = int(input("Digite o número da opção desejada: "))
-
-    match opcao:
-        case 1:
-            prato = "Picanha"
-            preco = 25
-        case 2:
-            prato = "Lasanha"
-            preco = 20
-        case 3:
-            prato = "Strogonoff"
-            preco = 18
-        case 4:
-            prato = "Bife acebolado"
-            preco = 15
-        case 5:
-            prato = "Pão com ovo"
-            preco = 5
-        case _:
-            prato = ""
-            preco = 0
-            print("Opção inválida.")
-            print("Tente novamente... \n")
-   
-    preco_total += preco
-    pratos_solicitados += ", " + prato if pratos_solicitados else prato
-   
-    mais_pedidos = input("Deseja fazer um novo pedido? \nUse S ou N: ").lower()
-   
-    if mais_pedidos == "n":
+    print("\n--- Cardápio ---")
+    for i in range(len(codigos)):
+        print(f"{codigos[i]} - {pratos[i]} - R$ {valores[i]:.2f}")
+    
+    try:
+        escolha = int(input("Escolha o código do prato desejado: "))
+        if escolha in codigos:
+            indice = codigos.index(escolha)
+            pedidos.append(pratos[indice])
+            valores_pedidos.append(valores[indice])
+        else:
+            print("Código inválido. Tente novamente.")
+            continue
+    except ValueError:
+        print("Digite um número válido.")
+        continue
+    
+    continuar = input("Deseja escolher outro prato? (s/n): ").lower()
+    if continuar != 's':
         break
-       
-print("\n=== Nota Fiscal ===")
-print(f"Pratos solicitados: {pratos_solicitados}")
-print(f"Total da compra: R$ {preco_total}")
+
+# Mostra os pedidos e o total
+print("\n--- Seus pedidos ---")
+total = 0
+for i in range(len(pedidos)):
+    print(f"{pedidos[i]} - R$ {valores_pedidos[i]:.2f}")
+    total += valores_pedidos[i]
+
+print(f"Total da conta: R$ {total:.2f}")
