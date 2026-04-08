@@ -1,13 +1,11 @@
-import os
+def calcular_idade(ano_nascimento):
+    ano_atual = 2026  # Ano atual
+    idade = ano_atual - ano_nascimento
+    return idade
 
-os.system("cls")
+# Solicita ao usuário o ano de nascimento
+ano_nascimento = int(input("Digite seu ano de nascimento: "))
 
-def verificar_par_ou_impar(numero):
-    if numero % 2 == 0:
-        print(f"O número {numero} é par.")
-    else:
-        print(f"O número {numero} é ímpar.")
-
-# Exemplo de uso
-verificar_par_ou_impar(7)
-verificar_par_ou_impar(12)
+# Chama a função e exibe a idade
+idade = calcular_idade(ano_nascimento)
+print(f"Sua idade é {idade} anos.")
