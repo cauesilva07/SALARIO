@@ -1,13 +1,29 @@
+from ast import main
 import os
-
-os.system("cls")
-
-while True:
-    login = input("Digite o login: ")
-    senha = input("Digite a senha: ")
-
-    if login == "admin" and senha == "1234":
-        print("Acesso permitido!")
-        break
+os.system("cls || clear")
+def calcular_imc(peso, altura):
+    imc = peso / (altura ** 2)
+    return imc
+def classificar_imc(imc):
+    if imc < 18.5 and 24.9:
+        return "Abaixo do peso"
+    elif 18.5 <= imc < 25:
+        return "Peso normal"
+    elif 25 <= imc < 30:
+        return "Sobrepeso"
+    elif 30 <= imc < 35:
+        return "Obesidade grau I"
+    elif 35 <= imc < 40:
+        return "Obesidade grau II"
     else:
-        print("Login ou senha incorretos. Tente novamente.")
+        return "Obesidade"
+    
+def main():
+        peso = float(input("Digite seu peso em kg: "))
+        altura = float(input("Digite sua altura em metros: "))
+        imc = calcular_imc(peso, altura)
+        classificacao = classificar_imc(imc)
+        print(f"Seu IMC é: {imc:.2f}")
+        print(f"Classificação: {classificacao}")
+if __name__ == "__main__":
+    main()
