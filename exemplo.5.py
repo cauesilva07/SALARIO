@@ -1,25 +1,46 @@
 import os
+from dataclasses import dataclass
 
-os.system("cls")
+os.system('cls')
+
+@dataclass
+class Paciente:
+    nome: str
+    idade: int
+    peso: int
+    Altura: int
+    
+paciente = Paciente(
+    int(input('Digite a idade do paciente: ')), 
+    input('Digite o nome do paciente: '),
+    int(float(input('Digite o peso do paciente: '))),
+    int(float(input('Digite a altura do paciente: ')))
+)
+print(f'Nome: {paciente.nome}')
+print(f'Idade: {paciente.idade}')
+print(f'Peso: {paciente.peso}')
+print(f'Altura: {paciente.Altura}')
 
 
-# Função para calcular a média
-def calcular_media(nota1, nota2):
-    return (nota1 + nota2) / 2
 
-# Função para informar aprovação
-def verificar_aprovacao(media):
-    if media >= 7:
-        return "Aprovado"
-    else:
-        return "Reprovado"
 
-# Programa principal
-nota1 = float(input("Digite a primeira nota: "))
-nota2 = float(input("Digite a segunda nota: "))
 
-media = calcular_media(nota1, nota2)
-resultado = verificar_aprovacao(media)
 
-print(f"Média: {media}")
-print(f"Situação: {resultado}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
