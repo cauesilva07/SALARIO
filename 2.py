@@ -1,32 +1,49 @@
+	
 import os
-os.system("cls || clear")
+from dataclasses import dataclass
 
-def ler_nota(ordem):
-    print("===== Solicitando dados =====")
-    while True:
-        try:
-            nota = float(input(f"Digite a nota do aluno {ordem} nota (0 a 10): "))
-            if 0 <= nota <= 10:
-                return nota
-            else:
-                print("Nota inválida. Digite um valor entre 0 e 10.")
-        except ValueError:
-            print("Entrada inválida. Por favor, digite um número.")
+os.system('cls')
 
-def calcular_media(nota1, nota2):
-    media = (nota1 + nota2) / 2
-    print(f"A média é: {media}")
-    return media
+@dataclass
+class Empresa:
+    nome: str
+    cnpj: str
+    telefone: str
 
-def verificar_aprovacao(media):
-    if media >= 7:
-        print("Aluno aprovado!")
-    else:
-        print("Aluno reprovado!")
+    def mostrar_dados(self):
+        print(f'Nome: {self.nome}')
+        print(f'CPNJ: {self.cnpj}')
+        print(f'Telefone: {self.telefone}\n')
 
-nota1 = ler_nota(1)
-nota2 = ler_nota(2)
 
-media = calcular_media(nota1, nota2)
-print("_" * 20)
-print(f"A média do aluno é: {media:.2f}")
+QUANTIDADE_FUNCIONARIOS = 1
+lista_empresas = []
+
+print('= Solicitnado dados =')
+for i in range(QUANTIDADE_FUNCIONARIOS):
+    nova_empresa = Empresa(
+        nome=input('Digite seu nome: '),
+        cnpj=input('Digite o CPNJ: '),
+        telefone=input('Digite seu telefone: ')
+    )
+    print('')
+    lista_empresas.append(nova_empresa)
+
+print('= Salvando dados =')
+with open('contato_empresas.csv', 'a', encoding='utf-8') as arquivo:
+    for empresa in lista_empresas:
+        arquivo.write(f'{empresa.nome}, {empresa.cnpj}, {empresa.telefone}\n')
+    print('Salvo com sucesso!\n')
+
+print('= Consultando arquivo =')
+lista_contatos = []
+with open('contato_empresas.csv', 'r', encoding='utf-8') as arquivo:
+    for linha in arquivo:
+        nome, cnpj, telefone = linha.strip().split(', ')
+        empresa = Empresa(nome=nome, cnpj=cnpj, telefone=telefone)
+        lista_contatos.append(empresa)
+
+for empresa in lista_contatos:
+    empresa.mostrar_dados()
+
+print('= Fim do programa. =')

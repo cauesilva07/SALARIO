@@ -1,12 +1,23 @@
 import os
-from datetime import date, datetime
+from dataclasses import dataclass
+
 os.system("cls || clear")
 
-def calcular_idade(ano_nascimento):
-    ano_atual = date.today().year
-    return ano_atual - ano_nascimento
+@dataclass
+class Funcionario:
+    nome: str
 
-ano = int(input("Digite o ano de nascimento: "))
-idade_usuario = calcular_idade(ano)
+    def mostrar_dados(self):
+        print(f"Nome: {self.nome}")
 
-print(f"Você tem {idade_usuario} anos.")
+lista_funcionarios = []
+
+print("- Solicitando dados -")
+with open('lista_funcionarios.csv', 'r', encoding='utf-8') as arquivo:
+    for linha in arquivo:
+        nome = linha.strip().split(', ')
+        lista_funcionarios.append(Funcionario(
+        nome=nome
+        ))
+for funcionario in lista_funcionarios:
+    funcionario.mostrar_dados()
